@@ -447,33 +447,22 @@ teste-de-cartela/
 
 ## 13. Passos de Implementação
 
-1. **Bootstrap**
-   `npx create-next-app@latest teste-de-cartela --typescript --tailwind --app --eslint`
-2. **Tokens + fontes**
-   - Estender `tailwind.config.ts` com cores e famílias tipográficas.
-   - `next/font/google`: Playfair Display (500 + 500 italic) e Inter (400/500/600) em `app/layout.tsx`.
-   - `globals.css`: variáveis CSS, reset leve, classes utilitárias de hierarquia.
-3. **Componentes base**: Button, SplitHero, HeroSection, PageSection, Card,
-   BenefitList, ColorSwatchStrip, OptionButton, QuestionCard, ResultBlock,
-   ProgressBar, LarissaNote.
-4. **Dados estáticos** (`data/`): copiar copy de `paginas.md` para objetos tipados;
-   criar objeto `homeHero` com H1 (com marcação italic), subtítulo, benefícios,
-   CTA, microcopy, swatches.
-5. **Página 1 (`app/page.tsx`)**: SplitHero + LarissaNote (placeholder para foto).
-6. **Página 2 (`app/instrucoes/page.tsx`)**: PageSection clara + copy + CTA.
-7. **QuizProvider + layout (`app/quiz/layout.tsx`)**: context + progress bar +
-   redirect guard.
-8. **Rota dinâmica (`app/quiz/[step]/page.tsx`)**: busca a pergunta em
-   `questions.ts`, renderiza QuestionCard, persiste resposta e avança.
-9. **Página de transição (`app/quiz/transicao/page.tsx`)** entre perguntas 7 e 8.
-10. **Página finalizando (`app/quiz/finalizando/page.tsx`)**: calcula resultado
-    ao clicar no CTA e navega para `/resultado/[slug]`.
-11. **Rota dinâmica (`app/resultado/[tipo]/page.tsx`)** com
-    `generateStaticParams` listando os 9 slugs. Renderiza ResultBlock para cada
-    seção do resultado.
-12. **Testes unitários** (`tests/quiz-logic.test.ts`) cobrindo as regras críticas.
-13. **Responsividade**: validar em 375px (mobile) e 1280px (desktop).
-14. **Deploy Vercel**: `vercel` → preview → produção.
+1. ~~**Bootstrap**~~ ✅ Next.js 16.2.3 + Tailwind v4 + TypeScript
+2. ~~**Tokens + fontes**~~ ✅ Tailwind v4 `@theme inline` em globals.css; Playfair Display + Inter via next/font/google em layout.tsx
+3. ~~**Componentes base**~~ ✅ Button, SplitHero, HeroSection, BenefitList, ColorSwatchStrip, OptionButton, QuestionCard, ProgressBar, LarissaNote (12 componentes)
+4. ~~**Dados estáticos**~~ ✅ data/questions.ts (14 perguntas), data/results.ts (9 resultados), data/pages.ts (home, instrucoes, transicao, finalizando)
+5. ~~**Página 1**~~ ✅ app/page.tsx (SplitHero + LarissaNote)
+6. ~~**Página 2**~~ ✅ app/instrucoes/page.tsx
+7. ~~**QuizProvider + layout**~~ ✅ context/QuizContext.tsx + app/quiz/layout.tsx
+8. ~~**Rota dinâmica quiz**~~ ✅ app/quiz/[step]/page.tsx
+9. ~~**Página de transição**~~ ✅ app/quiz/transicao/page.tsx
+10. ~~**Página finalizando**~~ ✅ app/quiz/finalizando/page.tsx
+11. ~~**Rota resultado**~~ ✅ app/resultado/[tipo]/page.tsx com generateStaticParams (9 slugs)
+12. **Testes unitários** — pendente
+13. **Responsividade** — pendente (verificação visual)
+14. **Deploy Vercel** — pendente
+
+**Build status**: ✅ Compilação limpa (0 erros TypeScript, 16 rotas geradas)
 
 ---
 
