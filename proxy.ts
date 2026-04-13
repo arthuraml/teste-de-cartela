@@ -76,7 +76,7 @@ export async function proxy(request: NextRequest) {
     });
 
     const response = NextResponse.redirect(
-      new URL("/instrucoes", request.url)
+      new URL("/", request.url)
     );
     setSessionCookie(response, tokenParam, sessionId);
     return response;
