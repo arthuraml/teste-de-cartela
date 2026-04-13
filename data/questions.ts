@@ -51,6 +51,11 @@ export const questions: Question[] = [
       B: "Prata",
       C: "Os dois ficam bem em mim",
     },
+    optionImages: {
+      A: "/images/q3-a.png",
+      B: "/images/q3-b.jpg",
+      C: "/images/q3-c.jpg",
+    },
   },
   {
     number: 4,
@@ -61,6 +66,11 @@ export const questions: Question[] = [
       A: "Off-white / creme (mais quente, levemente amarelado)",
       B: "Branco puro (mais frio, bem branco)",
       C: "Não percebo muita diferença",
+    },
+    optionImages: {
+      A: "/images/q4-a.jpg",
+      B: "/images/q4-b.jpg",
+      C: "/images/q4-c.jpg",
     },
   },
   {
@@ -73,6 +83,11 @@ export const questions: Question[] = [
       B: "Bases com fundo rosado ou frio",
       C: "Bases neutras / nunca percebi diferença",
     },
+    optionImages: {
+      A: "/images/q5-a.png",
+      B: "/images/q5-b.png",
+      C: "/images/q5-c.jpg",
+    },
   },
   {
     number: 6,
@@ -83,6 +98,11 @@ export const questions: Question[] = [
       A: "Tons mais quentes (pêssego, coral, levemente alaranjado)",
       B: "Tons mais frios (rosado, arroxeado)",
       C: "Difícil identificar / parece neutro",
+    },
+    optionImages: {
+      A: "/images/q6-a.jpg",
+      B: "/images/q6-b.jpg",
+      C: "/images/q6-c.jpg",
     },
   },
   {
@@ -95,6 +115,11 @@ export const questions: Question[] = [
       B: "Tons mais frios (cinza, azul acinzentado, rosa frio, vinho)",
       C: "Sinto que vários tons funcionam",
     },
+    optionImages: {
+      A: "/images/q7-a.jpg",
+      B: "/images/q7-b.jpg",
+      C: "/images/q7-c.png",
+    },
   },
   {
     number: 8,
@@ -106,7 +131,11 @@ export const questions: Question[] = [
       B: "Contraste médio — existe diferença, mas não muito marcada",
       C: "Alto contraste — diferença bem visível (ex: pele clara + cabelo escuro)",
     },
-    image: "contraste.jpg",
+    optionImages: {
+      A: "/images/q8-a.jpg",
+      B: "/images/q8-b.jpg",
+      C: "/images/q8-c.jpg",
+    },
   },
   {
     number: 9,
@@ -118,7 +147,11 @@ export const questions: Question[] = [
       B: "Fica equilibrado",
       C: "Me valoriza e deixa meus traços mais definidos",
     },
-    image: "roupa-escura.jpg",
+    optionImages: {
+      A: "/images/q9-a.jpg",
+      B: "/images/q9-b.jpg",
+      C: "/images/q9-c.jpg",
+    },
   },
   {
     number: 10,
@@ -130,7 +163,11 @@ export const questions: Question[] = [
       B: "Fica equilibrado",
       C: "Me deixa apagada ou sem definição",
     },
-    image: "roupa-clara.jpg",
+    optionImages: {
+      A: "/images/q10-a.png",
+      B: "/images/q10-b.jpg",
+      C: "/images/q10-c.png",
+    },
   },
   {
     number: 11,
@@ -142,7 +179,11 @@ export const questions: Question[] = [
       B: "Moderadamente definidos",
       C: "Bem definidos e marcantes",
     },
-    image: "tracos.jpg",
+    optionImages: {
+      A: "/images/q11-a.png",
+      B: "/images/q11-b.png",
+      C: "/images/q11-c.png",
+    },
   },
   {
     number: 12,
@@ -154,7 +195,11 @@ export const questions: Question[] = [
       B: "Fica equilibrado",
       C: "Eu sustento bem a cor",
     },
-    image: "cores-escuras.jpg",
+    optionImages: {
+      A: "/images/q12-a.jpg",
+      B: "/images/q12-b.jpg",
+      C: "/images/q12-c.jpg",
+    },
   },
   {
     number: 13,
@@ -166,7 +211,11 @@ export const questions: Question[] = [
       B: "Cores médias equilibram melhor",
       C: "Cores escuras deixam meu rosto mais equilibrado",
     },
-    image: "cores-por-tom.jpg",
+    optionImages: {
+      A: "/images/q13-a.jpg",
+      B: "/images/q13-b.jpg",
+      C: "/images/q13-c.jpg",
+    },
   },
   {
     number: 14,
@@ -178,6 +227,10 @@ export const questions: Question[] = [
       B: "Tons médios funcionam melhor na maioria das vezes",
       C: "Tons escuros realçam mais sua presença",
     },
-    image: "impacto-visual.jpg",
+    optionImages: {
+      A: "/images/q14-a.png",
+      B: "/images/q14-b.jpg",
+      C: "/images/q14-c.jpg",
+    },
   },
 ];
