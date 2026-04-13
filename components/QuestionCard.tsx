@@ -36,6 +36,7 @@ export function QuestionCard({
             text={question.options[opt]}
             selected={selected === opt}
             onSelect={onSelect}
+            image={question.optionImages?.[opt]}
           />
         ))}
       </div>

@@ -1,23 +1,13 @@
 export const homeHero = {
-  title: "Descubra Sua",
-  titleEmphasis: "Cartela de Cores Ideal",
-  subtitle:
-    "Saiba quais cores mais valorizam a sua beleza e fazem você brilhar.",
-  benefits: [
-    { icon: "check", label: "Rápido e fácil" },
-    { icon: "heart", label: "Respostas personalizadas" },
-    { icon: "star", label: "Entenda o que mais te valoriza" },
+  title: "Parabéns por ter dado esse primeiro passo por você!",
+  paragraphs: [
+    "Eu, Larissa, acredito que quando a gente descobre o que realmente funciona para nós, a forma como nos vemos muda.",
+    "A gente passa a se sentir mais segura, mais bonita — não por tentar ser outra pessoa, mas por finalmente entender o que já existe em nós!",
+    "Eu experimentei isso em mim, e sei o quanto isso faz diferença até nas pequenas escolhas do dia a dia.",
+    "E é exatamente isso que eu quero que você experimente também. Está pronta para descobrir as cores que realçam a sua beleza?",
   ],
-  cta: "Iniciar o Teste",
-  microcopy: "Leva menos de 2 minutos para descobrir a sua cartela ideal.",
-  swatches: ["#C6A77B", "#E9DADA", "#3A2E2A", "#B89566"],
-};
-
-export const larissaNote = {
-  quote:
-    "Eu acredito que quando a gente descobre o que realmente funciona para nós, a forma como nos vemos muda. A gente passa a se sentir mais segura, mais bonita — não por tentar ser outra pessoa, mas por finalmente entender o que já existe em nós!",
-  author: "Larissa",
   cta: "Quero conhecer minhas cores",
+  heroImage: "/images/larissa-hero.jpg",
 };
 
 export const instrucoes = {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Answer } from "@/lib/quiz-logic";
 
 interface OptionButtonProps {
@@ -8,6 +9,7 @@ interface OptionButtonProps {
   text: string;
   selected: boolean;
   onSelect: (option: Answer) => void;
+  image?: string;
 }
 
 export function OptionButton({
@@ -16,6 +18,7 @@ export function OptionButton({
   text,
   selected,
   onSelect,
+  image,
 }: OptionButtonProps) {
   return (
     <button
@@ -26,16 +29,28 @@ export function OptionButton({
           : "border-surface bg-white hover:border-cta/50 hover:shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
       }`}
     >
-      <span
-        className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-semibold mr-3 ${
-          selected
-            ? "bg-cta text-cta-text"
-            : "bg-surface text-foreground"
-        }`}
-      >
-        {label}
-      </span>
-      <span className="text-foreground">{text}</span>
+      {image && (
+        <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mb-3">
+          <Image
+            src={image}
+            alt={text}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
+      <div className="flex items-center">
+        <span
+          className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-semibold mr-3 flex-shrink-0 ${
+            selected
+              ? "bg-cta text-cta-text"
+              : "bg-surface text-foreground"
+          }`}
+        >
+          {label}
+        </span>
+        <span className="text-foreground">{text}</span>
+      </div>
     </button>
   );
 }

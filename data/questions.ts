@@ -4,6 +4,7 @@ export interface Question {
   title: string;
   text: string;
   options: { A: string; B: string; C: string };
+  optionImages?: { A: string; B: string; C: string };
   image?: string;
 }
 
@@ -18,6 +19,11 @@ export const questions: Question[] = [
       B: "Ficar vermelha ou queimar com facilidade",
       C: "Depende / acontece dos dois",
     },
+    optionImages: {
+      A: "/images/q1-a.jpg",
+      B: "/images/q1-b.jpg",
+      C: "/images/q1-c.jpg",
+    },
   },
   {
     number: 2,
@@ -28,6 +34,11 @@ export const questions: Question[] = [
       A: "Veias com aparência esverdeada",
       B: "Veias com aparência azulada ou arroxeada",
       C: "Não consigo identificar claramente / parece misto",
+    },
+    optionImages: {
+      A: "/images/q2-a.png",
+      B: "/images/q2-b.png",
+      C: "/images/q2-c.png",
     },
   },
   {
