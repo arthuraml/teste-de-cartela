@@ -1,6 +1,7 @@
 import { results, getResultBySlug } from "@/data/results";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
+import { EmailResultForm } from "@/components/EmailResultForm";
 
 export function generateStaticParams() {
   return results.map((r) => ({ tipo: r.slug }));
@@ -110,17 +111,17 @@ export default async function ResultadoPage(
         </div>
       </section>
 
+      <section className="py-12 md:py-16 px-6">
+        <div className="max-w-2xl mx-auto">
+          <EmailResultForm resultSlug={result.slug} resultTitle={result.title} />
+        </div>
+      </section>
+
       <section className="bg-primary py-12 md:py-16 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="font-heading text-lg md:text-xl font-medium text-background italic leading-relaxed">
             {result.insight}
           </p>
-
-          <div className="mt-8">
-            <Button href="/" variant="ghost">
-              Refazer o teste
-            </Button>
-          </div>
         </div>
       </section>
     </main>

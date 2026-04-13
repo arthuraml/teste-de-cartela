@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/context/QuizContext";
 import { computeResult } from "@/lib/quiz-logic";
@@ -11,11 +12,28 @@ import type { Answer } from "@/lib/quiz-logic";
 export default function FinalizandoPage() {
   const router = useRouter();
   const { answers } = useQuiz();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleResult = () => {
+  const handleResult = async () => {
+    setLoading(true);
+    setError(false);
+
     const complete = answers as Record<number, Answer>;
     const slug = computeResult(complete);
-    router.push(`/resultado/${slug}`);
+
+    try {
+      const res = await fetch("/api/quiz/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resultSlug: slug }),
+      });
+      if (!res.ok) throw new Error();
+      router.push(`/resultado/${slug}`);
+    } catch {
+      setError(true);
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,7 +66,14 @@ export default function FinalizandoPage() {
         </p>
 
         <div className="mt-8">
-          <Button onClick={handleResult}>{finalizando.cta}</Button>
+          <Button onClick={handleResult}>
+            {loading ? "Carregando..." : finalizando.cta}
+          </Button>
+          {error && (
+            <p className="mt-3 font-body text-sm text-red-600">
+              Erro ao processar. Tente novamente.
+            </p>
+          )}
         </div>
       </div>
     </main>
