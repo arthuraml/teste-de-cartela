@@ -63,21 +63,19 @@ export async function proxy(request: NextRequest) {
     const tokenParam = searchParams.get("token");
     if (!tokenParam) return NextResponse.next();
 
-    const token = await getTokenData(tokenParam);
-    if (!token || token.status !== "unused") {
+    const tokenData = await getTokenData(tokenParam);
+    if (!tokenData || tokenData.status !== "unused") {
       return NextResponse.redirect(new URL("/acesso-negado", request.url));
     }
 
     const sessionId = crypto.randomUUID();
-    token.status = "in_progress";
-    token.sessionId = sessionId;
-    await redis.set(tokenKey(tokenParam), JSON.stringify(token), {
-      pxat: token.expiresAt,
+    tokenData.status = "in_progress";
+    tokenData.sessionId = sessionId;
+    await redis.set(tokenKey(tokenParam), JSON.stringify(tokenData), {
+      pxat: tokenData.expiresAt,
     });
 
-    const response = NextResponse.redirect(
-      new URL("/", request.url)
-    );
+    const response = NextResponse.redirect(new URL("/", request.url));
     setSessionCookie(response, tokenParam, sessionId);
     return response;
   }

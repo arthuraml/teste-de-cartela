@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { Button } from "./Button";
+import { PurchaseCta } from "./PurchaseCta";
 import { homeHero } from "@/data/pages";
 
-export function SplitHero() {
+interface SplitHeroProps {
+  hasSession: boolean;
+}
+
+export function SplitHero({ hasSession }: SplitHeroProps) {
   return (
     <section
       className="relative overflow-hidden"
@@ -27,7 +32,11 @@ export function SplitHero() {
           ))}
 
           <div className="mt-8">
-            <Button href="/instrucoes">{homeHero.cta}</Button>
+            {hasSession ? (
+              <Button href="/instrucoes">{homeHero.cta}</Button>
+            ) : (
+              <PurchaseCta label={homeHero.cta} />
+            )}
           </div>
         </div>
 
