@@ -5,7 +5,6 @@ import { useQuiz } from "@/context/QuizContext";
 import { questions } from "@/data/questions";
 import { QuestionCard } from "@/components/QuestionCard";
 import { ProgressBar } from "@/components/ProgressBar";
-import type { Answer } from "@/lib/quiz-logic";
 
 export default function QuizStepPage() {
   const params = useParams<{ step: string }>();
@@ -23,13 +22,13 @@ export default function QuizStepPage() {
     );
   }
 
-  const handleSelect = (answer: Answer) => {
+  const handleSelect = (answer: string) => {
     setAnswer(step, answer);
 
     setTimeout(() => {
-      if (step === 7) {
+      if (step === 8) {
         router.push("/quiz/transicao");
-      } else if (step === 14) {
+      } else if (step === 11) {
         router.push("/quiz/finalizando");
       } else {
         router.push(`/quiz/${step + 1}`);
@@ -40,7 +39,7 @@ export default function QuizStepPage() {
   return (
     <main className="min-h-screen bg-background py-8 md:py-16 px-6">
       <div className="mb-10">
-        <ProgressBar current={step} total={14} />
+        <ProgressBar current={step} total={11} />
       </div>
 
       <QuestionCard

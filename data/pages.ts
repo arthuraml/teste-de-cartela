@@ -1,5 +1,5 @@
 export const homeHero = {
-  title: "Parabéns por ter dado esse primeiro passo por você!",
+  title: "VOCÊ ESTÁ PRESTES A DESCOBRIR AS CORES QUE TE DEIXAM MAIS BONITA…",
   paragraphs: [
     "Eu, Larissa, acredito que quando a gente descobre o que realmente funciona para nós, a forma como nos vemos muda.",
     "A gente passa a se sentir mais segura, mais bonita — não por tentar ser outra pessoa, mas por finalmente entender o que já existe em nós!",

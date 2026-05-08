@@ -29,7 +29,7 @@ export default function TransicaoPage() {
         ))}
 
         <div className="mt-8">
-          <Button href="/quiz/8">{transicao.cta}</Button>
+          <Button href="/quiz/9">{transicao.cta}</Button>
         </div>
       </div>
     </main>

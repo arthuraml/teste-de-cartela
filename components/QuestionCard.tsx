@@ -1,13 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import type { Question } from "@/data/questions";
-import type { Answer } from "@/lib/quiz-logic";
 import { OptionButton } from "./OptionButton";
 
 interface QuestionCardProps {
   question: Question;
-  selected?: Answer;
-  onSelect: (answer: Answer) => void;
+  selected?: string;
+  onSelect: (id: string) => void;
 }
 
 export function QuestionCard({
@@ -27,16 +27,24 @@ export function QuestionCard({
         </p>
       </div>
 
+      {question.illustrationImage && (
+        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6">
+          <Image
+            src={question.illustrationImage}
+            alt={question.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      )}
+
       <div className="flex flex-col gap-3">
-        {(["A", "B", "C"] as const).map((opt) => (
+        {question.options.map((opt) => (
           <OptionButton
-            key={opt}
-            label={opt}
+            key={opt.id}
             option={opt}
-            text={question.options[opt]}
-            selected={selected === opt}
+            selected={selected === opt.id}
             onSelect={onSelect}
-            image={question.optionImages?.[opt]}
           />
         ))}
       </div>

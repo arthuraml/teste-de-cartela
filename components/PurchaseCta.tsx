@@ -4,16 +4,17 @@ import { useState } from "react";
 
 interface PurchaseCtaProps {
   label: string;
+  className?: string;
 }
 
-export function PurchaseCta({ label }: PurchaseCtaProps) {
+export function PurchaseCta({ label, className = "" }: PurchaseCtaProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className="inline-block rounded-full px-8 py-3.5 font-body font-semibold text-base tracking-wide transition-all duration-200 cursor-pointer text-center bg-cta text-cta-text shadow-[0_6px_18px_rgba(198,167,123,0.25)] hover:bg-cta-hover hover:shadow-[0_8px_24px_rgba(198,167,123,0.35)]"
+        className={`inline-block rounded-full px-8 py-3.5 font-body font-semibold text-base tracking-wide transition-all duration-200 cursor-pointer text-center bg-cta text-cta-text shadow-[0_6px_18px_rgba(198,167,123,0.25)] hover:bg-cta-hover hover:shadow-[0_8px_24px_rgba(198,167,123,0.35)] ${className}`}
       >
         {label}
       </button>

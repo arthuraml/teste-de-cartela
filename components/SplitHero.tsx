@@ -33,9 +33,17 @@ export function SplitHero({ hasSession }: SplitHeroProps) {
 
           <div className="mt-8">
             {hasSession ? (
-              <Button href="/instrucoes">{homeHero.cta}</Button>
+              <Button
+                href="/instrucoes"
+                className="text-lg px-10 py-4 animate-pulse-cta"
+              >
+                {homeHero.cta}
+              </Button>
             ) : (
-              <PurchaseCta label={homeHero.cta} />
+              <PurchaseCta
+                label={homeHero.cta}
+                className="text-lg px-10 py-4 animate-pulse-cta"
+              />
             )}
           </div>
         </div>

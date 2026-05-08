@@ -1,236 +1,164 @@
+export interface QuestionOption {
+  id: string;
+  label: string;
+  image?: string;
+  category?: "QUENTE" | "FRIA" | "NEUTRA";
+  weight?: number;
+  objectPosition?: string;
+}
+
 export interface Question {
   number: number;
+  block: 1 | 2;
   emoji: string;
   title: string;
   text: string;
-  options: { A: string; B: string; C: string };
-  optionImages?: { A: string; B: string; C: string };
-  image?: string;
+  options: QuestionOption[];
+  illustrationImage?: string;
+  weightMultiplier?: number;
 }
 
 export const questions: Question[] = [
   {
     number: 1,
+    block: 1,
     emoji: "🌞",
     title: "Pergunta 1",
     text: "Quando você se expõe ao sol, sua pele costuma:",
-    options: {
-      A: "Bronzear com facilidade",
-      B: "Ficar vermelha ou queimar com facilidade",
-      C: "Depende / acontece dos dois",
-    },
-    optionImages: {
-      A: "/images/q1-a.jpg",
-      B: "/images/q1-b.jpg",
-      C: "/images/q1-c.jpg",
-    },
+    options: [
+      { id: "A", label: "Bronzear com facilidade", image: "/images/q1-a.jpg", category: "QUENTE" },
+      { id: "B", label: "Ficar vermelha ou queimar com facilidade", image: "/images/q1-b.jpg", category: "FRIA" },
+      { id: "C", label: "Depende / acontece dos dois", image: "/images/q1-c.jpg", category: "NEUTRA" },
+    ],
   },
   {
     number: 2,
+    block: 1,
     emoji: "🖐️",
     title: "Pergunta 2",
     text: "Observe as veias do seu pulso. Qual opção mais se aproxima?",
-    options: {
-      A: "Veias com aparência esverdeada",
-      B: "Veias com aparência azulada ou arroxeada",
-      C: "Não consigo identificar claramente / parece misto",
-    },
-    optionImages: {
-      A: "/images/q2-a.png",
-      B: "/images/q2-b.png",
-      C: "/images/q2-c.png",
-    },
+    options: [
+      { id: "A", label: "Veias com aparência esverdeada", image: "/images/q2-a.png", category: "QUENTE" },
+      { id: "B", label: "Veias com aparência azulada ou arroxeada", image: "/images/q2-b.png", category: "FRIA" },
+      { id: "C", label: "Não consigo identificar claramente / parece misto", image: "/images/q2-c.png", category: "NEUTRA" },
+    ],
   },
   {
     number: 3,
+    block: 1,
     emoji: "💍",
     title: "Pergunta 3",
     text: "Qual tipo de tom de jóia parece valorizar mais a sua pele?",
-    options: {
-      A: "Dourado",
-      B: "Prata",
-      C: "Os dois ficam bem em mim",
-    },
-    optionImages: {
-      A: "/images/q3-a.png",
-      B: "/images/q3-b.jpg",
-      C: "/images/q3-c.jpg",
-    },
+    options: [
+      { id: "A", label: "Dourado", image: "/images/q3-a.png", category: "QUENTE", objectPosition: "center top" },
+      { id: "B", label: "Prata", image: "/images/q3-b.jpg", category: "FRIA", objectPosition: "center top" },
+      { id: "C", label: "Os dois ficam bem em mim", image: "/images/q3-c.jpg", category: "NEUTRA", objectPosition: "center top" },
+    ],
   },
   {
     number: 4,
+    block: 1,
     emoji: "🤍",
     title: "Pergunta 4",
     text: "Qual tom de branco parece valorizar mais o seu rosto?",
-    options: {
-      A: "Off-white / creme (mais quente, levemente amarelado)",
-      B: "Branco puro (mais frio, bem branco)",
-      C: "Não percebo muita diferença",
-    },
-    optionImages: {
-      A: "/images/q4-a.jpg",
-      B: "/images/q4-b.jpg",
-      C: "/images/q4-c.jpg",
-    },
+    options: [
+      { id: "A", label: "Off-white / creme (mais quente, levemente amarelado)", image: "/images/q4-a.jpg", category: "QUENTE", objectPosition: "center top" },
+      { id: "B", label: "Branco puro (mais frio, bem branco)", image: "/images/q4-b.jpg", category: "FRIA", objectPosition: "center top" },
+      { id: "C", label: "Não percebo muita diferença", image: "/images/q4-c.jpg", category: "NEUTRA", objectPosition: "center top" },
+    ],
   },
   {
     number: 5,
+    block: 1,
     emoji: "💄",
     title: "Pergunta 5",
     text: "Quando você usa base de maquiagem, qual tipo costuma se adaptar melhor ao seu tom de pele?",
-    options: {
-      A: "Bases com fundo amarelado ou dourado",
-      B: "Bases com fundo rosado ou frio",
-      C: "Bases neutras / nunca percebi diferença",
-    },
-    optionImages: {
-      A: "/images/q5-a.png",
-      B: "/images/q5-b.png",
-      C: "/images/q5-c.jpg",
-    },
+    options: [
+      { id: "A", label: "Bases com fundo amarelado ou dourado", image: "/images/q5-a.png", category: "QUENTE" },
+      { id: "B", label: "Bases com fundo rosado ou frio", image: "/images/q5-b.png", category: "FRIA" },
+      { id: "C", label: "Bases neutras / nunca percebi diferença", image: "/images/q5-c.jpg", category: "NEUTRA" },
+    ],
   },
   {
     number: 6,
+    block: 1,
     emoji: "💋",
     title: "Pergunta 6",
     text: "A cor natural dos seus lábios tende mais para:",
-    options: {
-      A: "Tons mais quentes (pêssego, coral, levemente alaranjado)",
-      B: "Tons mais frios (rosado, arroxeado)",
-      C: "Difícil identificar / parece neutro",
-    },
-    optionImages: {
-      A: "/images/q6-a.jpg",
-      B: "/images/q6-b.jpg",
-      C: "/images/q6-c.jpg",
-    },
+    options: [
+      { id: "A", label: "Tons mais quentes (pêssego, coral, levemente alaranjado)", image: "/images/q6-a.jpg", category: "QUENTE" },
+      { id: "B", label: "Tons mais frios (rosado, arroxeado)", image: "/images/q6-b.jpg", category: "FRIA" },
+      { id: "C", label: "Difícil identificar / parece neutro", image: "/images/q6-c.jpg", category: "NEUTRA" },
+    ],
   },
   {
     number: 7,
+    block: 1,
     emoji: "🌈",
     title: "Pergunta 7",
     text: "Pensando nas cores que você já usou, quais parecem te valorizar mais naturalmente?",
-    options: {
-      A: "Tons mais quentes (bege, dourado, terracota, verde oliva)",
-      B: "Tons mais frios (cinza, azul acinzentado, rosa frio, vinho)",
-      C: "Sinto que vários tons funcionam",
-    },
-    optionImages: {
-      A: "/images/q7-a.jpg",
-      B: "/images/q7-b.jpg",
-      C: "/images/q7-c.png",
-    },
+    options: [
+      { id: "A", label: "Tons mais quentes (bege, dourado, terracota, verde oliva)", image: "/images/q7-a.jpg", category: "QUENTE" },
+      { id: "B", label: "Tons mais frios (cinza, azul acinzentado, rosa frio, vinho)", image: "/images/q7-b.jpg", category: "FRIA" },
+      { id: "C", label: "Sinto que vários tons funcionam", image: "/images/q7-c.png", category: "NEUTRA" },
+    ],
   },
   {
     number: 8,
-    emoji: "⚖️",
+    block: 1,
+    emoji: "🟡",
     title: "Pergunta 8",
-    text: "O contraste entre a sua pele e o seu cabelo natural é:",
-    options: {
-      A: "Baixo contraste — pele e cabelo têm tons próximos",
-      B: "Contraste médio — existe diferença, mas não muito marcada",
-      C: "Alto contraste — diferença bem visível (ex: pele clara + cabelo escuro)",
-    },
-    optionImages: {
-      A: "/images/q8-a.jpg",
-      B: "/images/q8-b.jpg",
-      C: "/images/q8-c.jpg",
-    },
+    text: "Na luz natural, qual desses reflexos aparece com mais frequência no seu cabelo natural?",
+    options: [
+      { id: "A", label: "Percebo reflexos dourados, acobreados ou levemente avermelhados", image: "/images/q8-a.jpg", category: "QUENTE" },
+      { id: "B", label: "Percebo reflexos acinzentados, mais opacos ou puxados para o frio", image: "/images/q8-b.jpg", category: "FRIA" },
+      { id: "C", label: "Não percebo um reflexo claro — nem dourado nem acinzentado, parece equilibrado", image: "/images/q8-c.jpg", category: "NEUTRA" },
+    ],
   },
   {
     number: 9,
-    emoji: "🖤",
+    block: 2,
+    emoji: "🔹",
     title: "Pergunta 9",
-    text: "Quando você usa roupas escuras (como preto ou marinho), o efeito no seu rosto costuma ser:",
-    options: {
-      A: "Fica pesado, endurece ou evidencia marcas",
-      B: "Fica equilibrado",
-      C: "Me valoriza e deixa meus traços mais definidos",
-    },
-    optionImages: {
-      A: "/images/q9-a.jpg",
-      B: "/images/q9-b.jpg",
-      C: "/images/q9-c.jpg",
-    },
+    text: "Qual é a cor natural do seu cabelo? (Considere a cor da raiz, mesmo que hoje esteja pintado ou grisalho)",
+    illustrationImage: "/images/q9-illustration.jpg",
+    weightMultiplier: 4,
+    options: [
+      { id: "A", label: "Loiro claro / loiro médio", weight: 0 },
+      { id: "B", label: "Loiro escuro / ruivo", weight: 1 },
+      { id: "C", label: "Castanho claro", weight: 2 },
+      { id: "D", label: "Castanho escuro", weight: 3 },
+      { id: "E", label: "Preto", weight: 4 },
+    ],
   },
   {
     number: 10,
-    emoji: "🤍",
+    block: 2,
+    emoji: "🔹",
     title: "Pergunta 10",
-    text: "Quando você usa roupas muito claras (como branco ou azul bebê), o efeito costuma ser:",
-    options: {
-      A: "Me ilumina e valoriza bastante",
-      B: "Fica equilibrado",
-      C: "Me deixa apagada ou sem definição",
-    },
-    optionImages: {
-      A: "/images/q10-a.png",
-      B: "/images/q10-b.jpg",
-      C: "/images/q10-c.png",
-    },
+    text: "Qual é a cor natural dos seus olhos?",
+    illustrationImage: "/images/q10-illustration.jpg",
+    weightMultiplier: 4,
+    options: [
+      { id: "A", label: "Muito claro (azul claro ou verde claro)", weight: 0 },
+      { id: "B", label: "Claro (azul médio ou verde médio)", weight: 1 },
+      { id: "C", label: "Médio (azul escuro, verde escuro, mel ou castanho claro)", weight: 2 },
+      { id: "D", label: "Escuro (castanho)", weight: 3 },
+      { id: "E", label: "Quase preto (castanho bem escuro - quase preto)", weight: 4 },
+    ],
   },
   {
     number: 11,
-    emoji: "👀",
+    block: 2,
+    emoji: "🔹",
     title: "Pergunta 11",
-    text: "Em fotos sem maquiagem, seus traços (olhos, boca, sobrancelha) parecem:",
-    options: {
-      A: "Mais suaves e pouco contrastantes",
-      B: "Moderadamente definidos",
-      C: "Bem definidos e marcantes",
-    },
-    optionImages: {
-      A: "/images/q11-a.png",
-      B: "/images/q11-b.png",
-      C: "/images/q11-c.png",
-    },
-  },
-  {
-    number: 12,
-    emoji: "🎨",
-    title: "Pergunta 12",
-    text: "Quando você usa cores escuras, o que acontece?",
-    options: {
-      A: "A cor chama mais atenção que eu",
-      B: "Fica equilibrado",
-      C: "Eu sustento bem a cor",
-    },
-    optionImages: {
-      A: "/images/q12-a.jpg",
-      B: "/images/q12-b.jpg",
-      C: "/images/q12-c.jpg",
-    },
-  },
-  {
-    number: 13,
-    emoji: "⚖️",
-    title: "Pergunta 13",
-    text: "Pensando no seu rosto, o que parece mais equilibrado?",
-    options: {
-      A: "Cores claras deixam meu rosto mais proporcional",
-      B: "Cores médias equilibram melhor",
-      C: "Cores escuras deixam meu rosto mais equilibrado",
-    },
-    optionImages: {
-      A: "/images/q13-a.jpg",
-      B: "/images/q13-b.jpg",
-      C: "/images/q13-c.jpg",
-    },
-  },
-  {
-    number: 14,
-    emoji: "👤",
-    title: "Pergunta 14",
-    text: "Pensando no efeito geral da sua aparência, você sente que:",
-    options: {
-      A: "Tons claros realçam mais sua beleza",
-      B: "Tons médios funcionam melhor na maioria das vezes",
-      C: "Tons escuros realçam mais sua presença",
-    },
-    optionImages: {
-      A: "/images/q14-a.png",
-      B: "/images/q14-b.jpg",
-      C: "/images/q14-c.jpg",
-    },
+    text: "Qual é a tonalidade natural das suas sobrancelhas?",
+    illustrationImage: "/images/q11-illustration.jpg",
+    weightMultiplier: 1,
+    options: [
+      { id: "A", label: "Claras (loiro claro, loiro médio, ruivo)", weight: 0 },
+      { id: "B", label: "Médias (castanho claro, castanho escuro)", weight: 1 },
+      { id: "C", label: "Escuras (preto)", weight: 2 },
+    ],
   },
 ];

@@ -1,4 +1,6 @@
-export type Answer = "A" | "B" | "C";
+import { questions } from "@/data/questions";
+
+export type Answer = string;
 export type Temperature = "QUENTE" | "FRIA" | "NEUTRA";
 export type Depth = "CLARA" | "MEDIA" | "PROFUNDA";
 export type ResultSlug =
@@ -30,56 +32,47 @@ const RESULT_MAP: Record<Temperature, Record<Depth, ResultSlug>> = {
   },
 };
 
-export function computeTemperature(answers: Answer[]): Temperature {
-  let quente = 0;
-  let fria = 0;
-  let neutra = 0;
+export function computeTemperature(answers: Record<number, Answer>): Temperature {
+  const counts: Record<Temperature, number> = { QUENTE: 0, FRIA: 0, NEUTRA: 0 };
 
-  for (const a of answers) {
-    if (a === "A") quente++;
-    else if (a === "B") fria++;
-    else neutra++;
+  for (const q of questions) {
+    if (q.block !== 1) continue;
+    const ans = answers[q.number];
+    if (!ans) continue;
+    const opt = q.options.find((o) => o.id === ans);
+    if (opt?.category) counts[opt.category]++;
   }
 
-  if (neutra >= 4) return "NEUTRA";
+  const sorted = (Object.entries(counts) as [Temperature, number][]).sort(
+    (a, b) => b[1] - a[1],
+  );
+  const [topCat, topCount] = sorted[0];
+  const [, secondCount] = sorted[1];
 
-  if (quente > fria && quente > neutra) return "QUENTE";
-  if (fria > quente && fria > neutra) return "FRIA";
-  if (neutra > quente && neutra > fria) return "NEUTRA";
-
-  if (quente === fria) return "NEUTRA";
-  if (quente === neutra) return "QUENTE";
-  if (fria === neutra) return "FRIA";
-
+  if (topCount - secondCount >= 2) return topCat;
   return "NEUTRA";
 }
 
-export function computeDepth(answers: Answer[]): Depth {
-  let clara = 0;
-  let media = 0;
-  let profunda = 0;
+export function computeDepth(answers: Record<number, Answer>): Depth {
+  let total = 0;
 
-  for (const a of answers) {
-    if (a === "A") clara++;
-    else if (a === "B") media++;
-    else profunda++;
+  for (const q of questions) {
+    if (q.block !== 2) continue;
+    const ans = answers[q.number];
+    if (!ans) continue;
+    const opt = q.options.find((o) => o.id === ans);
+    const weight = opt?.weight ?? 0;
+    const multiplier = q.weightMultiplier ?? 1;
+    total += weight * multiplier;
   }
 
-  if (clara > media && clara > profunda) return "CLARA";
-  if (profunda > clara && profunda > media) return "PROFUNDA";
-  if (media > clara && media > profunda) return "MEDIA";
-
-  return "MEDIA";
+  if (total <= 10) return "CLARA";
+  if (total <= 24) return "MEDIA";
+  return "PROFUNDA";
 }
 
-export function computeResult(
-  answers: Record<number, Answer>
-): ResultSlug {
-  const tempAnswers = Array.from({ length: 7 }, (_, i) => answers[i + 1]);
-  const depthAnswers = Array.from({ length: 7 }, (_, i) => answers[i + 8]);
-
-  const temperature = computeTemperature(tempAnswers);
-  const depth = computeDepth(depthAnswers);
-
+export function computeResult(answers: Record<number, Answer>): ResultSlug {
+  const temperature = computeTemperature(answers);
+  const depth = computeDepth(answers);
   return RESULT_MAP[temperature][depth];
 }

@@ -9,7 +9,7 @@ import {
 } from "react";
 import type { Answer } from "@/lib/quiz-logic";
 
-const STORAGE_KEY = "teste-cartela-quiz-v1";
+const STORAGE_KEY = "teste-cartela-quiz-v2";
 
 interface QuizState {
   answers: Partial<Record<number, Answer>>;
