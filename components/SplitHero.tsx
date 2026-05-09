@@ -85,6 +85,14 @@ export function SplitHero({ hasSession }: SplitHeroProps) {
           sizes="100vw"
           priority
         />
+        {/* Dark gradient on the left — solid bordô fading to transparent for text legibility */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(43,15,20,1) 0%, rgba(43,15,20,0.98) 28%, rgba(43,15,20,0.85) 38%, rgba(43,15,20,0.4) 50%, rgba(43,15,20,0) 65%)",
+          }}
+        />
         <div className="absolute inset-0">
           <div className="max-w-[1400px] mx-auto h-full flex items-center px-8 lg:px-14">
             <div className="w-full max-w-[440px] lg:max-w-[480px]">
