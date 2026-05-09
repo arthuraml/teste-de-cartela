@@ -20,22 +20,20 @@
 - **Imagens órfãs removidas**: `q9-*`, `q10-*`, `q11-*`, `q12-*`, `q13-*`, `q14-*`.
 - **Verificação**: `tsc --noEmit` exit 0 ✓ ; **17 casos de teste de pontuação passaram** (regra de dominância + fórmula + boundaries + 4 combinatórias de slug).
 
-### 🟡 Pendentes — Larissa precisa fazer upload manual
-Os links Drive retornam página de sign-in para download anônimo, então não dá para baixar via script. **A Larissa precisa baixar do Drive e colocar em `public/images/` com os nomes exatos abaixo:**
+### ✅ Imagens — todas substituídas e adicionadas (2026-04-15)
+Convertidas de HEIC/PNG via `Pillow` e salvas em `public/images/`:
 
-| Caminho final no projeto | Origem (Drive) |
-|---|---|
-| `public/images/larissa-hero.jpg` *(substituir)* | https://drive.google.com/file/d/1nntxv4NeGd4eZfhg8G0ELy0zDwfYAe7G |
-| `public/images/q2-b.png` *(substituir)* | https://drive.google.com/file/d/11zLMLfyN_6GJAuh3ishIa60CDJefj8vp |
-| `public/images/q7-a.jpg` *(substituir)* | https://drive.google.com/file/d/1G0uxm_tm0hY3uWtjLiiEOjcqQjD76V3U |
-| `public/images/q7-b.jpg` *(substituir)* | https://drive.google.com/file/d/1rJT-g-A5ZWwXlR0YL-TZfbzqSGCUrlSN |
-| `public/images/q7-c.png` *(substituir)* | https://drive.google.com/file/d/13UfY4Aol65y46a7-VPyw0Av0Gdc7_im- |
-| `public/images/q8-a.jpg` *(substituir)* | https://drive.google.com/file/d/1fB_HNV44Z-duGX-ZEt3BiNuG90U8-nE1 |
-| `public/images/q8-b.jpg` *(substituir)* | https://drive.google.com/file/d/10pLpFxU0JJS0-syD043pW8Ym2aeTwp3s |
-| `public/images/q8-c.jpg` *(substituir)* | https://drive.google.com/file/d/15Nu33FzmnkvXp0jdLxIa8rxhBC2RDvWM |
-| `public/images/q9-illustration.jpg` *(novo)* | https://drive.google.com/drive/u/0/folders/13oQrVu9z6JBs5_rirB4Bu9ddJAPJIsF1 (pasta — escolher 1 ou montar grid) |
-| `public/images/q10-illustration.jpg` *(novo)* | https://drive.google.com/file/d/1nc3AVRVOpWawKGG47aTCijQmvNPCzxNR |
-| `public/images/q11-illustration.jpg` *(novo)* | https://drive.google.com/file/d/125hM4Tn3wwaM5x4SgW0_u3L1q1SWOEh1 |
+| Arquivo | Status | Origem |
+|---|---|---|
+| `larissa-hero.jpg` | ✅ substituído | `Imagens/P1IMAGEM` (HEIC→JPEG) |
+| `q2-b.png` | ✅ substituído | `Imagens/2BV2` (HEIC→PNG) |
+| `q7-a.jpg`, `q7-b.jpg`, `q7-c.png` | ✅ substituídos | `Imagens/7AV2.png`, `7BV2.png`, `7CV2.png` |
+| `q8-a.jpg`, `q8-b.jpg`, `q8-c.jpg` | ✅ substituídos | `Imagens/8AV2.png`, `8BV2.png`, `8CV2.png` |
+| `q9-illustration.jpg` | ✅ novo | `Imagens/9IMAGEM` (HEIC→JPEG) |
+| `q10-illustration.jpg` | ✅ novo | `Imagens/10IMAGEM` (HEIC→JPEG) |
+| `q11-illustration.jpg` | ✅ novo | `Imagens/11IMAGEM` (HEIC→JPEG) |
+
+Commit `74ed9bb` + deploy produção concluídos.
 
 ### 🟡 Pendentes — confirmação Larissa
 - Discrepâncias Q9/Q11 (peso vs. opções — recomendado seguir as opções listadas, com weights 0–4 e 0–2; mas a tabela do briefing original tem agrupamentos diferentes).

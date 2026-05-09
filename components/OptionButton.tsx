@@ -20,12 +20,12 @@ export function OptionButton({ option, selected, onSelect }: OptionButtonProps) 
       }`}
     >
       {option.image && (
-        <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mb-3">
+        <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden mb-3 bg-surface/40">
           <Image
             src={option.image}
             alt={option.label}
             fill
-            className="object-cover"
+            className={option.objectFit === "contain" ? "object-contain" : "object-cover"}
             style={{ objectPosition: option.objectPosition ?? "center" }}
           />
         </div>

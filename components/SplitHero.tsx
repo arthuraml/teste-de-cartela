@@ -9,61 +9,73 @@ interface SplitHeroProps {
 
 export function SplitHero({ hasSession }: SplitHeroProps) {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, #2B0F14 0%, #2B0F14 60%, #F7F7FA 100%)",
-      }}
-    >
-      <div className="max-w-[1120px] mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
-        <div className="relative z-10 order-2 md:order-1">
-          <h1 className="font-heading text-2xl md:text-[36px] font-medium leading-[1.2] tracking-wide text-background">
-            {homeHero.title}
+    <section className="relative w-full min-h-[680px] md:min-h-[760px] overflow-hidden bg-primary">
+      <Image
+        src={homeHero.heroImage}
+        alt="Larissa Alencar"
+        fill
+        className="object-cover object-[70%_center] md:object-center"
+        priority
+      />
+
+      <div
+        className="absolute inset-0 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(43,15,20,0.92) 0%, rgba(43,15,20,0.78) 28%, rgba(43,15,20,0.25) 55%, rgba(43,15,20,0) 75%)",
+        }}
+      />
+
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(43,15,20,0.92) 0%, rgba(43,15,20,0.55) 35%, rgba(43,15,20,0.85) 80%, rgba(43,15,20,0.95) 100%)",
+        }}
+      />
+
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-24 min-h-[680px] md:min-h-[760px] flex items-center">
+        <div className="max-w-md">
+          <h1 className="font-heading">
+            <span className="block text-base md:text-lg font-normal text-background/95 lowercase">
+              {homeHero.titleSmall}
+            </span>
+            <span
+              className="block mt-2 text-3xl md:text-5xl font-medium italic leading-[1.1] lowercase"
+              style={{ color: "#D9B889" }}
+            >
+              {homeHero.titleLarge}
+            </span>
           </h1>
 
-          {homeHero.paragraphs.map((p, i) => (
-            <p
-              key={i}
-              className="mt-4 font-body text-[15px] md:text-base text-surface/90 leading-relaxed"
-            >
-              {p}
+          <div className="mt-7 space-y-4">
+            {homeHero.paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className="font-body text-[14px] md:text-[15px] text-background/90 leading-relaxed"
+              >
+                {p}
+              </p>
+            ))}
+            <p className="font-body text-[14px] md:text-[15px] font-semibold text-background leading-relaxed">
+              {homeHero.paragraphHighlighted}
             </p>
-          ))}
+          </div>
 
           <div className="mt-8">
             {hasSession ? (
               <Button
                 href="/instrucoes"
-                className="text-lg px-10 py-4 animate-pulse-cta"
+                className="text-sm uppercase tracking-wider px-8 py-4 animate-pulse-cta"
               >
                 {homeHero.cta}
               </Button>
             ) : (
               <PurchaseCta
                 label={homeHero.cta}
-                className="text-lg px-10 py-4 animate-pulse-cta"
+                className="text-sm uppercase tracking-wider px-8 py-4 animate-pulse-cta"
               />
             )}
-          </div>
-        </div>
-
-        <div className="relative order-1 md:order-2 flex justify-center">
-          <div
-            className="absolute inset-0 rounded-full opacity-30"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(198,167,123,0.15) 0%, transparent 70%)",
-            }}
-          />
-          <div className="relative w-64 h-80 md:w-80 md:h-[480px] rounded-2xl overflow-hidden">
-            <Image
-              src={homeHero.heroImage}
-              alt="Larissa Alencar"
-              fill
-              className="object-cover"
-              priority
-            />
           </div>
         </div>
       </div>

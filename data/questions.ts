@@ -5,6 +5,7 @@ export interface QuestionOption {
   category?: "QUENTE" | "FRIA" | "NEUTRA";
   weight?: number;
   objectPosition?: string;
+  objectFit?: "cover" | "contain";
 }
 
 export interface Question {
@@ -15,6 +16,7 @@ export interface Question {
   text: string;
   options: QuestionOption[];
   illustrationImage?: string;
+  illustrationFit?: "cover" | "contain";
   weightMultiplier?: number;
 }
 
@@ -50,9 +52,9 @@ export const questions: Question[] = [
     title: "Pergunta 3",
     text: "Qual tipo de tom de jóia parece valorizar mais a sua pele?",
     options: [
-      { id: "A", label: "Dourado", image: "/images/q3-a.png", category: "QUENTE", objectPosition: "center top" },
-      { id: "B", label: "Prata", image: "/images/q3-b.jpg", category: "FRIA", objectPosition: "center top" },
-      { id: "C", label: "Os dois ficam bem em mim", image: "/images/q3-c.jpg", category: "NEUTRA", objectPosition: "center top" },
+      { id: "A", label: "Dourado", image: "/images/q3-a.png", category: "QUENTE", objectFit: "contain" },
+      { id: "B", label: "Prata", image: "/images/q3-b.jpg", category: "FRIA", objectFit: "contain" },
+      { id: "C", label: "Os dois ficam bem em mim", image: "/images/q3-c.jpg", category: "NEUTRA", objectFit: "contain" },
     ],
   },
   {
@@ -62,9 +64,9 @@ export const questions: Question[] = [
     title: "Pergunta 4",
     text: "Qual tom de branco parece valorizar mais o seu rosto?",
     options: [
-      { id: "A", label: "Off-white / creme (mais quente, levemente amarelado)", image: "/images/q4-a.jpg", category: "QUENTE", objectPosition: "center top" },
-      { id: "B", label: "Branco puro (mais frio, bem branco)", image: "/images/q4-b.jpg", category: "FRIA", objectPosition: "center top" },
-      { id: "C", label: "Não percebo muita diferença", image: "/images/q4-c.jpg", category: "NEUTRA", objectPosition: "center top" },
+      { id: "A", label: "Off-white / creme (mais quente, levemente amarelado)", image: "/images/q4-a.jpg", category: "QUENTE", objectFit: "contain" },
+      { id: "B", label: "Branco puro (mais frio, bem branco)", image: "/images/q4-b.jpg", category: "FRIA", objectFit: "contain" },
+      { id: "C", label: "Não percebo muita diferença", image: "/images/q4-c.jpg", category: "NEUTRA", objectFit: "contain" },
     ],
   },
   {
@@ -98,9 +100,9 @@ export const questions: Question[] = [
     title: "Pergunta 7",
     text: "Pensando nas cores que você já usou, quais parecem te valorizar mais naturalmente?",
     options: [
-      { id: "A", label: "Tons mais quentes (bege, dourado, terracota, verde oliva)", image: "/images/q7-a.jpg", category: "QUENTE" },
-      { id: "B", label: "Tons mais frios (cinza, azul acinzentado, rosa frio, vinho)", image: "/images/q7-b.jpg", category: "FRIA" },
-      { id: "C", label: "Sinto que vários tons funcionam", image: "/images/q7-c.png", category: "NEUTRA" },
+      { id: "A", label: "Tons mais quentes (bege, dourado, terracota, verde oliva)", image: "/images/q7-a.jpg", category: "QUENTE", objectFit: "contain" },
+      { id: "B", label: "Tons mais frios (cinza, azul acinzentado, rosa frio, vinho)", image: "/images/q7-b.jpg", category: "FRIA", objectFit: "contain" },
+      { id: "C", label: "Sinto que vários tons funcionam", image: "/images/q7-c.png", category: "NEUTRA", objectFit: "contain" },
     ],
   },
   {
@@ -110,9 +112,9 @@ export const questions: Question[] = [
     title: "Pergunta 8",
     text: "Na luz natural, qual desses reflexos aparece com mais frequência no seu cabelo natural?",
     options: [
-      { id: "A", label: "Percebo reflexos dourados, acobreados ou levemente avermelhados", image: "/images/q8-a.jpg", category: "QUENTE" },
-      { id: "B", label: "Percebo reflexos acinzentados, mais opacos ou puxados para o frio", image: "/images/q8-b.jpg", category: "FRIA" },
-      { id: "C", label: "Não percebo um reflexo claro — nem dourado nem acinzentado, parece equilibrado", image: "/images/q8-c.jpg", category: "NEUTRA" },
+      { id: "A", label: "Percebo reflexos dourados, acobreados ou levemente avermelhados", image: "/images/q8-a.jpg", category: "QUENTE", objectFit: "contain" },
+      { id: "B", label: "Percebo reflexos acinzentados, mais opacos ou puxados para o frio", image: "/images/q8-b.jpg", category: "FRIA", objectFit: "contain" },
+      { id: "C", label: "Não percebo um reflexo claro — nem dourado nem acinzentado, parece equilibrado", image: "/images/q8-c.jpg", category: "NEUTRA", objectFit: "contain" },
     ],
   },
   {
@@ -122,6 +124,7 @@ export const questions: Question[] = [
     title: "Pergunta 9",
     text: "Qual é a cor natural do seu cabelo? (Considere a cor da raiz, mesmo que hoje esteja pintado ou grisalho)",
     illustrationImage: "/images/q9-illustration.jpg",
+    illustrationFit: "contain",
     weightMultiplier: 4,
     options: [
       { id: "A", label: "Loiro claro / loiro médio", weight: 0 },
@@ -138,6 +141,7 @@ export const questions: Question[] = [
     title: "Pergunta 10",
     text: "Qual é a cor natural dos seus olhos?",
     illustrationImage: "/images/q10-illustration.jpg",
+    illustrationFit: "contain",
     weightMultiplier: 4,
     options: [
       { id: "A", label: "Muito claro (azul claro ou verde claro)", weight: 0 },

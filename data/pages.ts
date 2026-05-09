@@ -1,11 +1,13 @@
 export const homeHero = {
-  title: "VOCÊ ESTÁ PRESTES A DESCOBRIR AS CORES QUE TE DEIXAM MAIS BONITA…",
+  titleSmall: "você está prestes a",
+  titleLarge: "descobrir as cores que te deixam mais bonita…",
   paragraphs: [
-    "Eu, Larissa, acredito que quando a gente descobre o que realmente funciona para nós, a forma como nos vemos muda.",
-    "A gente passa a se sentir mais segura, mais bonita — não por tentar ser outra pessoa, mas por finalmente entender o que já existe em nós!",
-    "Eu experimentei isso em mim, e sei o quanto isso faz diferença até nas pequenas escolhas do dia a dia.",
-    "E é exatamente isso que eu quero que você experimente também. Está pronta para descobrir as cores que realçam a sua beleza?",
+    "O maior erro que muitas mulheres cometem é tentar seguir padrões que não valorizam a própria beleza.",
+    "A verdade é que cada mulher possui características únicas — e quando você descobre as cores certas para você, sua imagem muda completamente.",
+    "Porque beleza não é tentar parecer outra mulher. É entender o que realmente valoriza quem você já é.",
   ],
+  paragraphHighlighted:
+    "E é exatamente isso que você está prestes a descobrir agora. Está pronta para conhecer as cores que revelam a sua beleza?",
   cta: "Quero conhecer minhas cores",
   heroImage: "/images/larissa-hero.jpg",
 };

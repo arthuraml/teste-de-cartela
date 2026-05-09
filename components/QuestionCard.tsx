@@ -28,12 +28,12 @@ export function QuestionCard({
       </div>
 
       {question.illustrationImage && (
-        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6">
+        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-surface/40">
           <Image
             src={question.illustrationImage}
             alt={question.title}
             fill
-            className="object-cover"
+            className={question.illustrationFit === "contain" ? "object-contain" : "object-cover"}
           />
         </div>
       )}
