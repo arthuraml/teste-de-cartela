@@ -75,7 +75,7 @@ export function SplitHero({ hasSession }: SplitHeroProps) {
       {/* Desktop / tablet: full image as hero with text overlay on dark left portion */}
       <section
         className="hidden md:block relative w-full bg-primary overflow-hidden"
-        style={{ aspectRatio: "3/2", maxHeight: "92vh" }}
+        style={{ aspectRatio: "3/2" }}
       >
         <Image
           src={homeHero.heroImage}
