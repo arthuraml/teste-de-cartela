@@ -6,8 +6,11 @@ export const homeHero = {
     "A verdade é que cada mulher possui características únicas — e quando você descobre as cores certas para você, sua imagem muda completamente.",
     "Porque beleza não é tentar parecer outra mulher. É entender o que realmente valoriza quem você já é.",
   ],
-  paragraphHighlighted:
-    "E é exatamente isso que você está prestes a descobrir agora. Está pronta para conhecer as cores que revelam a sua beleza?",
+  closingPrefix: "E é exatamente isso que ",
+  closingHighlight: "você está",
+  closingSuffix: " prestes a descobrir agora.",
+  closingQuestion:
+    "Está pronta para conhecer as cores que revelam a sua beleza?",
   cta: "Quero conhecer minhas cores",
   heroImage: "/images/larissa-hero.jpg",
 };
