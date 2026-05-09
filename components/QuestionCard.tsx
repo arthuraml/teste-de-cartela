@@ -28,11 +28,15 @@ export function QuestionCard({
       </div>
 
       {question.illustrationImage && (
-        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-surface/40">
+        <div
+          className="relative w-full rounded-xl overflow-hidden mb-6 bg-surface/40"
+          style={{ aspectRatio: question.illustrationAspect ?? "16/9" }}
+        >
           <Image
             src={question.illustrationImage}
             alt={question.title}
             fill
+            sizes="(max-width: 768px) 100vw, 512px"
             className={question.illustrationFit === "contain" ? "object-contain" : "object-cover"}
           />
         </div>

@@ -14,7 +14,7 @@ export function SplitHero({ hasSession }: SplitHeroProps) {
         src={homeHero.heroImage}
         alt="Larissa Alencar"
         fill
-        className="object-cover object-[70%_center] md:object-center"
+        className="object-cover object-[70%_top] md:object-top"
         priority
       />
 
