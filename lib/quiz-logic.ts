@@ -66,8 +66,8 @@ export function computeDepth(answers: Record<number, Answer>): Depth {
     total += weight * multiplier;
   }
 
-  if (total <= 10) return "CLARA";
-  if (total <= 24) return "MEDIA";
+  if (total <= 13) return "CLARA";
+  if (total <= 25) return "MEDIA";
   return "PROFUNDA";
 }
 
