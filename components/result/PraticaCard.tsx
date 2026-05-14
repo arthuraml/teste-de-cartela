@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ResultImage } from "./ResultImage";
 
 interface PraticaCardProps {
   title?: string;
@@ -6,20 +6,15 @@ interface PraticaCardProps {
   bullets: string[];
 }
 
+/**
+ * Card individual usado pelo R6 (Equilíbrio Sofisticado) com 4 sub-blocos.
+ * Imagem aparece completa, sem crop.
+ */
 export function PraticaCard({ title, image, bullets }: PraticaCardProps) {
   return (
     <div className="bg-background rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.05)] overflow-hidden">
-      <div
-        className="relative w-full bg-surface/40"
-        style={{ aspectRatio: "4/3" }}
-      >
-        <Image
-          src={image}
-          alt={title || ""}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 480px"
-        />
+      <div className="p-4 pb-0">
+        <ResultImage src={image} alt={title || ""} maxWidth="max-w-full" />
       </div>
       <div className="p-6 md:p-7">
         {title && (

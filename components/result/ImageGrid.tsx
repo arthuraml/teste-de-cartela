@@ -1,37 +1,34 @@
-import Image from "next/image";
+import { ResultImage } from "./ResultImage";
 
 interface ImageGridProps {
   images: string[];
-  aspect?: string;
 }
 
-export function ImageGrid({ images, aspect = "3/4" }: ImageGridProps) {
+/**
+ * Grid responsivo de imagens. Cada imagem aparece completa (sem crop),
+ * mantendo sua proporção natural. Layout adapta-se ao número de imagens.
+ */
+export function ImageGrid({ images }: ImageGridProps) {
   if (!images.length) return null;
 
-  // Layout responsivo conforme o número de imagens
   const cols =
     images.length === 1
-      ? "grid-cols-1 max-w-md mx-auto"
+      ? "grid-cols-1"
       : images.length === 2
         ? "grid-cols-1 sm:grid-cols-2"
         : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
+  const maxWidth = images.length === 1 ? "max-w-2xl" : "max-w-md";
+
   return (
-    <div className={`grid ${cols} gap-4 md:gap-6`}>
+    <div className={`grid ${cols} gap-4 md:gap-6 items-start`}>
       {images.map((src, i) => (
-        <div
+        <ResultImage
           key={src + i}
-          className="relative w-full rounded-2xl overflow-hidden bg-surface/40"
-          style={{ aspectRatio: aspect }}
-        >
-          <Image
-            src={src}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        </div>
+          src={src}
+          maxWidth={maxWidth}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
       ))}
     </div>
   );

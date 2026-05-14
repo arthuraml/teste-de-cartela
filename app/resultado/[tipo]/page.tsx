@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { results, getResultBySlug } from "@/data/results";
 import { Button } from "@/components/Button";
 import { EmailResultForm } from "@/components/EmailResultForm";
 import { ResultHero } from "@/components/result/ResultHero";
+import { ResultImage } from "@/components/result/ResultImage";
 import { ImageTextRow } from "@/components/result/ImageTextRow";
 import { ImageGrid } from "@/components/result/ImageGrid";
 import { PraticaCard } from "@/components/result/PraticaCard";
@@ -31,16 +31,25 @@ export default async function ResultadoPage(props: {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* 1. Hero */}
+      {/* 1. Faixa Bordeaux com título — PRIMEIRA coisa que a usuária vê */}
       <ResultHero
-        image={result.imagens.capa}
         emoji={result.emoji}
         title={result.title}
         subtitle={result.subtitle}
       />
 
-      {/* 2. Seu resultado */}
-      <section className="py-12 md:py-16 px-6">
+      {/* 2. Imagem principal da cartela — sem corte, proporção natural */}
+      <section className="bg-background py-8 md:py-10 px-6">
+        <ResultImage
+          src={result.imagens.capa}
+          alt={result.title}
+          maxWidth="max-w-2xl"
+          priority
+        />
+      </section>
+
+      {/* 3. Texto explicativo "Seu resultado" */}
+      <section className="pb-12 md:pb-16 px-6">
         <div className="max-w-2xl mx-auto">
           <p className="font-heading text-lg md:text-xl italic text-foreground leading-relaxed">
             {result.seuResultado}
@@ -48,27 +57,18 @@ export default async function ResultadoPage(props: {
         </div>
       </section>
 
-      {/* 3. (R5) Foto extra após "Seu resultado" */}
+      {/* 4. (R5) Foto extra após "Seu resultado" */}
       {result.imagens.seuResultadoExtra && (
-        <section className="px-6 pb-4">
-          <div className="max-w-3xl mx-auto">
-            <div
-              className="relative w-full rounded-2xl overflow-hidden bg-surface/40"
-              style={{ aspectRatio: "16/10" }}
-            >
-              <Image
-                src={result.imagens.seuResultadoExtra}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 720px"
-              />
-            </div>
-          </div>
+        <section className="px-6 pb-12">
+          <ResultImage
+            src={result.imagens.seuResultadoExtra}
+            alt=""
+            maxWidth="max-w-3xl"
+          />
         </section>
       )}
 
-      {/* 4. Sobre você */}
+      {/* 5. Sobre você */}
       <section className="bg-surface/30 py-12 md:py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-2xl md:text-3xl font-medium text-foreground mb-8 tracking-wide">
@@ -76,12 +76,7 @@ export default async function ResultadoPage(props: {
           </h2>
           {result.imagens.sobreVoce && result.imagens.sobreVoce.length > 0 && (
             <div className="mb-8">
-              <ImageGrid
-                images={result.imagens.sobreVoce}
-                aspect={
-                  result.imagens.sobreVoce.length === 1 ? "16/10" : "3/4"
-                }
-              />
+              <ImageGrid images={result.imagens.sobreVoce} />
             </div>
           )}
           <div className="max-w-2xl space-y-4">
@@ -97,7 +92,7 @@ export default async function ResultadoPage(props: {
         </div>
       </section>
 
-      {/* 5. Como isso aparece na prática */}
+      {/* 6. Como isso aparece na prática */}
       {(hasPraticaSimple || hasPraticaCards) && (
         <section className="py-12 md:py-16 px-6">
           <div className="max-w-5xl mx-auto">
@@ -108,10 +103,7 @@ export default async function ResultadoPage(props: {
             {/* Caso simples (1 bloco): grid de fotos + texto */}
             {hasPraticaSimple && !hasPraticaCards && (
               <>
-                <ImageGrid
-                  images={result.imagens.pratica!}
-                  aspect="3/4"
-                />
+                <ImageGrid images={result.imagens.pratica!} />
                 <div className="mt-8 max-w-2xl space-y-4">
                   {result.comoPraticaIntro && (
                     <p className="font-body text-base md:text-[17px] text-foreground leading-relaxed">
@@ -162,13 +154,12 @@ export default async function ResultadoPage(props: {
         </section>
       )}
 
-      {/* 6. Cores que mais te valorizam */}
+      {/* 7. Cores que mais te valorizam */}
       <ImageTextRow
         image={result.imagens.cores.favoraveis}
         imageAlt="Cores favoráveis"
         title="🎨 Cores que mais te valorizam"
         bg="surface"
-        imageAspect="4/3"
       >
         {result.coresFavoraveisIntro && (
           <p className="font-body text-base text-foreground leading-relaxed mb-4">
@@ -192,14 +183,13 @@ export default async function ResultadoPage(props: {
         )}
       </ImageTextRow>
 
-      {/* 7. Cores que podem te desfavorecer */}
+      {/* 8. Cores que podem te desfavorecer */}
       <ImageTextRow
         image={result.imagens.cores.aEvitar}
         imageAlt="Cores a evitar"
         title="⚠️ Cores que podem te desfavorecer"
         bg="light"
         reverse
-        imageAspect="4/3"
       >
         {result.coresDesfavoraveisIntro && (
           <p className="font-body text-base text-foreground leading-relaxed mb-4">
@@ -223,13 +213,12 @@ export default async function ResultadoPage(props: {
         )}
       </ImageTextRow>
 
-      {/* 8. Cores neutras (uso estratégico) */}
+      {/* 9. Cores neutras (uso estratégico) */}
       <ImageTextRow
         image={result.imagens.cores.neutras}
         imageAlt="Cores neutras"
         title="⚖️ Cores neutras (uso estratégico)"
         bg="surface"
-        imageAspect="4/3"
       >
         {result.coresNeutrasIntro && (
           <p className="font-body text-base text-foreground leading-relaxed mb-4">
@@ -255,10 +244,10 @@ export default async function ResultadoPage(props: {
         )}
       </ImageTextRow>
 
-      {/* 9. Entenda seu contraste (R4, R5, R6, R8, R9) */}
+      {/* 10. Entenda seu contraste (R4, R5, R6, R8, R9) */}
       {result.contraste && <ContrasteCard data={result.contraste} />}
 
-      {/* 10. Maquiagem ideal */}
+      {/* 11. Maquiagem ideal */}
       {result.maquiagem && (
         <MaquiagemCard
           data={result.maquiagem}
@@ -266,7 +255,7 @@ export default async function ResultadoPage(props: {
         />
       )}
 
-      {/* 11. Como aplicar no seu dia a dia */}
+      {/* 12. Como aplicar no seu dia a dia */}
       <section className="py-12 md:py-16 px-6">
         <div className="max-w-2xl mx-auto">
           <h2 className="font-heading text-2xl md:text-3xl font-medium text-foreground mb-6 tracking-wide">
@@ -288,7 +277,7 @@ export default async function ResultadoPage(props: {
         </div>
       </section>
 
-      {/* 12. Insight importante */}
+      {/* 13. Insight importante */}
       <section className="bg-primary py-14 md:py-20 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="font-body text-xs md:text-sm uppercase tracking-[0.2em] text-background/70 mb-4">
@@ -303,7 +292,7 @@ export default async function ResultadoPage(props: {
         </div>
       </section>
 
-      {/* 13. EmailResultForm */}
+      {/* 14. EmailResultForm */}
       <section className="py-12 md:py-16 px-6">
         <div className="max-w-2xl mx-auto">
           <EmailResultForm
@@ -313,10 +302,14 @@ export default async function ResultadoPage(props: {
         </div>
       </section>
 
-      {/* 14. CTA Refazer (mantém) */}
+      {/* 15. CTA Refazer */}
       <section className="bg-surface/40 py-10 px-6">
         <div className="max-w-md mx-auto text-center">
-          <Button href="/" variant="ghost" className="text-xs uppercase tracking-[0.18em]">
+          <Button
+            href="/"
+            variant="ghost"
+            className="text-xs uppercase tracking-[0.18em]"
+          >
             Refazer o teste
           </Button>
         </div>

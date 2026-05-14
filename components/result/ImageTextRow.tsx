@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ResultImage } from "./ResultImage";
 
 interface ImageTextRowProps {
   image: string;
@@ -7,7 +7,6 @@ interface ImageTextRowProps {
   bg?: "light" | "surface" | "primary";
   title?: string;
   children: React.ReactNode;
-  imageAspect?: string;
 }
 
 const BG_CLASSES: Record<NonNullable<ImageTextRowProps["bg"]>, string> = {
@@ -16,6 +15,10 @@ const BG_CLASSES: Record<NonNullable<ImageTextRowProps["bg"]>, string> = {
   primary: "bg-primary text-background",
 };
 
+/**
+ * Seção com imagem + texto lado a lado (em desktop) ou empilhada (em mobile).
+ * A imagem aparece sempre completa, respeitando proporção natural.
+ */
 export function ImageTextRow({
   image,
   imageAlt = "",
@@ -23,26 +26,16 @@ export function ImageTextRow({
   bg = "light",
   title,
   children,
-  imageAspect = "4/5",
 }: ImageTextRowProps) {
   return (
     <section className={`${BG_CLASSES[bg]} py-12 md:py-16 px-6`}>
       <div
-        className={`max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center ${
+        className={`max-w-5xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-start ${
           reverse ? "md:[&>div:first-child]:order-2" : ""
         }`}
       >
-        <div
-          className="relative w-full rounded-2xl overflow-hidden bg-surface/40"
-          style={{ aspectRatio: imageAspect }}
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 480px"
-          />
+        <div>
+          <ResultImage src={image} alt={imageAlt} maxWidth="max-w-md" />
         </div>
         <div>
           {title && (

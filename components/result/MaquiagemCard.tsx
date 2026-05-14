@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ResultImage } from "./ResultImage";
 import type { MaquiagemSection } from "@/data/results";
 
 interface MaquiagemCardProps {
@@ -36,18 +36,11 @@ export function MaquiagemCard({ data, image }: MaquiagemCardProps) {
           💄 Maquiagem ideal
         </h2>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          <div
-            className="relative w-full rounded-2xl overflow-hidden bg-surface/40"
-            style={{ aspectRatio: "4/5" }}
-          >
-            <Image
-              src={image}
-              alt="Maquiagem ideal"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 480px"
-            />
-          </div>
+          <ResultImage
+            src={image}
+            alt="Maquiagem ideal"
+            maxWidth="max-w-md"
+          />
           <div>
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
               {visibleFields.map((field) => (
